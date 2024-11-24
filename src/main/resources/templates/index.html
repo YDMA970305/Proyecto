@@ -8,5 +8,41 @@
         <h2>PAGINA DE INICIO</h2>
         <p th:text ="${mensaje}"></p>
         <p th:text ="${dato}"></p>
+        <hr>
+        <b>CEDULA:</b><span th:text ="${alguien.id}"></span><br>
+        <b>NOMBRE:</b><span th:text ="${alguien.name}"></span><br>
+        <b>APELLIDO:</b><span th:text ="${alguien.last_name}"></span><br>
+        <b>EMAIL:</b><span th:text ="${alguien.email}"></span><br>
+        <b>TELEFONO:</b><span th:text ="${alguien.phone}"></span><br>
+        <b>STATUS:</b><span th:text ="${alguien.status}"></span><br>
+        <b>CREATED AT:</b><span th:text ="${alguien.created_at}"></span><br>
+        <hr>
+        <h4>Lista de usuarios</h4>
+        <hr>
+        <div th if="${usuarios != null and !usuarios.isEmpty()}">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>EMAIL</th>
+                <th>TELEFONO</th>
+                <th>STATUS</th>
+                <th>CREATED AT</th>
+            </tr>
+            <tr th:each="u : ${usuarios}">
+                <td th:text="${u.id}"></td>
+                <td th:text="${u.name}"></td>
+                <td th:text="${u.last_name}"></td>
+                <td th:text="${u.email}"></td>
+                <td th:text="${u.phone}"></td>
+                <td th:text="${u.status}"></td>
+                <td th:text="${u.created_at}"></td>
+            </tr>
+        </table>
+    </div>
+    <div th if="${usuarios == null or usuarios.isEmpty()}">
+        <p>No hay usuarios registrados</p>
+    </div>
     </body>
 </html>
